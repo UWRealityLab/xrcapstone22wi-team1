@@ -9,6 +9,7 @@ const App = () => {
             <HashRouter>
                 <Nav />
                 <Routes>
+                    <Route path="/" element={<Index />} />
                 </Routes>
             </HashRouter>
         </ThemeProvider>
