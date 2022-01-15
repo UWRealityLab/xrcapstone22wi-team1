@@ -78,7 +78,7 @@ const Nav = () => {
                                     textAlign: "center",
                                 }}
                             >
-                                LOGO
+                                VR
                             </Typography>
                         </Link>
                         <Box
@@ -136,7 +136,7 @@ const Nav = () => {
                                     display: { xs: "inline", md: "none" },
                                 }}
                             >
-                                LOGO
+                                VR
                             </Typography>
                         </Link>
                         <Box
