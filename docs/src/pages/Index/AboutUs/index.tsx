@@ -12,16 +12,20 @@ import {
 const AboutUs = () => {
     return (
         <Container maxWidth="lg">
-            <Typography variant="h3" align="center" sx={{marginBottom: "1em"}}>
+            <Typography
+                variant="h3"
+                align="center"
+                sx={{ marginBottom: "1em" }}
+            >
                 About Us
             </Typography>
-            <Grid container>
+            <Grid container justifyContent="center" direction="row" spacing={2}>
                 {ABOUT.map((person) => (
-                    <Grid item xs={12} lg={4}>
-                        <Card sx={{ maxWidth: 345 }}>
+                    <Grid item xs={12} md={4}>
+                        <Card sx={{ maxWidth: 345, margin: "auto" }}>
                             <CardMedia
                                 component="img"
-                                image={(person.image)}
+                                image={person.image}
                                 alt={person.name}
                             />
                             <CardContent>
