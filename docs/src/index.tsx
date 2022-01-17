@@ -7,6 +7,7 @@ import theme from "./theme";
 import Template from "./components/Template";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
+import BlogContent from "./pages/BlogContent";
 import "./index.css";
 
 ReactDOM.render(
@@ -30,6 +31,13 @@ ReactDOM.render(
                                 <Template title="Blogs" element={<Blog />} />
                             }
                         />
+                        <Route
+                            path="blogs/:week"
+                            element={
+                                <Template
+                                    title="Blogs"
+                                    element={<BlogContent />}
+                                />
                             }
                         />
                     </Route>
