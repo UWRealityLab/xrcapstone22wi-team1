@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 const pages = [
-    { name: "Blog", route: "blog" },
+    { name: "Blogs", route: "blogs" },
     { name: "Product Requirements", route: "product" },
     { name: "Demo", route: "demo" },
 ];
