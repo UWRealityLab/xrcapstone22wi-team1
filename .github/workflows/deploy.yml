@@ -7,7 +7,9 @@ jobs:
   build-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./
     strategy:
       matrix:
         node-version: [14.x]
