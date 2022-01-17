@@ -63,21 +63,21 @@ const AboutUs = () => {
 const ABOUT = [
     {
         name: "Jolin Tsai",
-        image: "static/images/AboutUs/jolin.jpg",
-        description: "Hi, I am an undergrad CS student in UW",
-        link: "https://linkedin.com",
+        image: "./static/images/AboutUs/jolin.jpg",
+        description: "Hello! I am a graduating senior majoring in computer science at UW. I didn't have prior experience of VR/AR until this capstone course. I am looking forward to building cool VR/AR application with my team!",
+        link: "https://www.linkedin.com/in/yi-lin-tsai",
     },
     {
         name: "Peter Chan",
-        image: "static/images/AboutUs/peter.jpg",
-        description: "Hi, I am an undergrad CS student in UW",
-        link: "https://linkedin.com",
+        image: "./static/images/AboutUs/peter.jpg",
+        description: "Hello! I'm a senior computer science student at UW. This is my first time working on VR/AR technology, and I am looking forward to building our first VR application!",
+        link: "https://www.linkedin.com/in/chia-hao-chan",
     },
     {
         name: "Justin Huang",
-        image: "static/images/AboutUs/justin.jpg",
-        description: "Hi, I am an undergrad CS student in UW",
-        link: "https://linkedin.com",
+        image: "./static/images/AboutUs/justin.jpg",
+        description: "Hi, I am a senior computer science student at UW. I am excited to work on my first VR application in my life!",
+        link: "https://linkedin.com/in/cyh0530",
     },
 ];
 
