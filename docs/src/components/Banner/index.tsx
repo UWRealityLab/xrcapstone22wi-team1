@@ -1,7 +1,11 @@
 import { Grid, Container, Typography } from "@mui/material";
-import "./banner.css";
+import "./index.css";
 
-const Banner = () => {
+interface IProps {
+    title: string;
+}
+
+const Banner = ({ title }: IProps) => {
     return (
         <div id="banner">
             <div className="overlay"></div>
@@ -9,7 +13,7 @@ const Banner = () => {
                 <Grid container>
                     <Grid item md={10} lg={8} sx={{ textAlign: "center" }}>
                         <Typography variant="h1" sx={{ fontWeight: 700 }}>
-                            CSE2 Virtual Tour
+                            {title}
                         </Typography>
                     </Grid>
                 </Grid>

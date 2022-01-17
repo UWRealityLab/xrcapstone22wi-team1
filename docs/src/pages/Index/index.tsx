@@ -1,11 +1,14 @@
-import Banner from './Banner'
-import AboutUs from './AboutUs'
+import { Box } from "@mui/material";
+import Banner from '../../components/Banner'
+import AboutUs from "./AboutUs";
+
+
 const Index = () => {
     return (
-        <div>
-            <Banner />
+        <Box sx={{ marginBottom: "4em" }}>
+            <Banner title="CSE2 Virtual Tour" />
             <AboutUs />
-        </div>
+        </Box>
     )
 }
 
