@@ -8,6 +8,8 @@ import Template from "./components/Template";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogContent from "./pages/BlogContent";
+import Product from "./pages/Product";
+import Demo from "./pages/Demo";
 import "./index.css";
 
 ReactDOM.render(
@@ -38,6 +40,18 @@ ReactDOM.render(
                                     title="Blogs"
                                     element={<BlogContent />}
                                 />
+                            }
+                        />
+                        <Route
+                            path="product"
+                            element={
+                                <Template title="Product Requirements" element={<Product />} />
+                            }
+                        />
+                        <Route
+                            path="demo"
+                            element={
+                                <Template title="Demo" element={<Demo />} />
                             }
                         />
                     </Route>
