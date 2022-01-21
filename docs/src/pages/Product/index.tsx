@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { shadows } from "@mui/system";
 
 const Product = () => {
     return (
