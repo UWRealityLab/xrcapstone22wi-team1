@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css",
-    "main.js": "/xrcapstone22wi-team1/static/js/main.d2d7faf3.js",
+    "main.js": "/xrcapstone22wi-team1/static/js/main.6a6ad6cd.js",
     "static/media/banner.jpeg": "/xrcapstone22wi-team1/static/media/banner.2e0f242842736f41bb2d.jpeg",
     "static/media/week2.md": "/xrcapstone22wi-team1/static/media/week2.7912f50b149764d240a7.md",
+    "static/media/week3.md": "/xrcapstone22wi-team1/static/media/week3.e10e6491347fb0713adf.md",
     "index.html": "/xrcapstone22wi-team1/index.html",
     "static/media/week1.md": "/xrcapstone22wi-team1/static/media/week1.a7432ea45324b097cb6f.md",
     "main.a1fe03a4.css.map": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css.map",
-    "main.d2d7faf3.js.map": "/xrcapstone22wi-team1/static/js/main.d2d7faf3.js.map"
+    "main.6a6ad6cd.js.map": "/xrcapstone22wi-team1/static/js/main.6a6ad6cd.js.map"
   },
   "entrypoints": [
     "static/css/main.a1fe03a4.css",
-    "static/js/main.d2d7faf3.js"
+    "static/js/main.6a6ad6cd.js"
   ]
 }
