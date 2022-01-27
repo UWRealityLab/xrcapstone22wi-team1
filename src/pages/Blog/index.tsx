@@ -1,6 +1,8 @@
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+const WEEK = 3;
+
 const Blog = () => {
     return (
         <Grid container justifyContent="center" spacing={2}>
