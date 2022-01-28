@@ -1,0 +1,12 @@
+body {
+    margin: 0px;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+iframe {
+    border: solid 1px black;
+}
