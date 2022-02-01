@@ -3,7 +3,52 @@ guid: 709d1389452ad4dbfbe08dd934150c89
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWall
+    second: {fileID: 2100000, guid: 74ee37b341bc44501aec40c4d7587ff8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet
+    second: {fileID: 2100000, guid: 5af9db7dd16d847378776c050a77fe8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConcreteFloor
+    second: {fileID: 2100000, guid: 3b3318ff9ef3540579a2c5eb0710ff33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 3e189d983d6344930aab57fe3f3051d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel
+    second: {fileID: 2100000, guid: 0c660c7e34776472c93c1b29eb3313e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteWall
+    second: {fileID: 2100000, guid: b7ff67c87550749bab8e29f5e599beaf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodenInteractiveWall
+    second: {fileID: 2100000, guid: 72481fc4b68214a6495b64d21b16a67a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodenStair
+    second: {fileID: 2100000, guid: b8694d9ad231f43cda9464cb83cb619d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodenWall
+    second: {fileID: 2100000, guid: ff5acb2da9a5d40cfb0392a4b2fd46e8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
