@@ -7,42 +7,37 @@ public class TurnWithPlayer : MonoBehaviour
     public GameObject player;
     public Transform mTarget;
 
-    float mSpeed = 1.5f;
+    float mSpeed = 3f;
     Vector3 TargetRotation;
-
+    Animator mAnimator;
     const float EPSILON = 2.5f;
     const float EPSILON2 = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
+        mAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        TargetRotation = mTarget.localEulerAngles;
-        TargetRotation.x = 0;
-        TargetRotation.z = 0;
-        //TargetRotation.y = -5;
-        
-        //Debug.Log(TargetRotation);
-        Debug.Log(transform.localEulerAngles.y - mTarget.localEulerAngles.y);
-        if (Mathf.Abs(transform.localEulerAngles.y - mTarget.localEulerAngles.y) > 3f)
+        Quaternion target = Quaternion.Euler(0, mTarget.localEulerAngles.y, 0);
+        if (mTarget.localEulerAngles.y - transform.localEulerAngles.y > 0)
         {
-            if (transform.localEulerAngles.y - mTarget.localEulerAngles.y > 0f)
-            {
-                //TargetRotation.y -= 360f;
-                //Debug.Log(TargetRotation);
-                transform.Rotate(-TargetRotation, 3f);
-            }
-            else
-            {
-                //TargetRotation.y -= 360f;
-               // Debug.Log(TargetRotation);
-                transform.Rotate(TargetRotation, 3f);
-            }
-            
+            mAnimator.SetBool("TurnRight", true);
+            Debug.Log("positive");
+        } else if (mTarget.localEulerAngles.y - transform.localEulerAngles.y < 0)
+        {
+            mAnimator.SetBool("TurnLeft", true);
+            Debug.Log("negative");
+        } else
+        {
+            mAnimator.SetBool("TurnRight", false);
+            mAnimator.SetBool("TurnLeft", false);
         }
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+        
+
 
     }
 }
