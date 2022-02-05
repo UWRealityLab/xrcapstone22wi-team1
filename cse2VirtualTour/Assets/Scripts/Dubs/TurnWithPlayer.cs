@@ -20,6 +20,8 @@ public class TurnWithPlayer : MonoBehaviour
     {
         Quaternion target = Quaternion.Euler(0, mTarget.localEulerAngles.y + mCamera.localEulerAngles.y, 0);
         var cameraAndPlayerRotation = mTarget.localEulerAngles.y + mCamera.localEulerAngles.y;
+
+        // Use EPSILON to prevent the sensitive movement 
         if (cameraAndPlayerRotation % 360 - transform.localEulerAngles.y > EPSILON)
         {
             mAnimator.SetBool("TurnRight", true);

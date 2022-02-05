@@ -8,7 +8,8 @@ public class FollowPlayer : MonoBehaviour
 
     public Transform mTarget;
 
-    float mSpeed = 2f;
+    const float mSpeed = 2f;
+    const float circleRadiusCenterAtPlayer = 2f;
     Vector3 mLookDirection;
 
     Animator mAnimator;
@@ -21,8 +22,10 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         float angle = transform.localEulerAngles.y;
-        mLookDirection.x = mTarget.position.x + Mathf.Sin(angle * Mathf.Deg2Rad) * 1.5f;
-        mLookDirection.z = mTarget.position.z + Mathf.Cos(angle * Mathf.Deg2Rad) * 1.5f;
+        // Use sin and cos to get the x z coordinate and multiply by circle radius. The product would
+        // be the points of the circle that center at player's coordinate.
+        mLookDirection.x = mTarget.position.x + Mathf.Sin(angle * Mathf.Deg2Rad) * circleRadiusCenterAtPlayer;
+        mLookDirection.z = mTarget.position.z + Mathf.Cos(angle * Mathf.Deg2Rad) * circleRadiusCenterAtPlayer;
         mLookDirection.y = transform.position.y;
  
         if (transform.position != mLookDirection)
