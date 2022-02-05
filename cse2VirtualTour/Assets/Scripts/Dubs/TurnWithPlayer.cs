@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TurnWithPlayer : MonoBehaviour
 {
-    public GameObject player;
+    public Transform mCamera;
     public Transform mTarget;
 
-    float mSpeed = 3f;
-    Vector3 TargetRotation;
     Animator mAnimator;
-    const float EPSILON = 2.5f;
-    const float EPSILON2 = 1.5f;
-    // Start is called before the first frame update
+    const float EPSILON = 2f;
+    const float rSpeed = 0.5f;
     void Start()
     {
         mAnimator = GetComponent<Animator>();
@@ -21,23 +18,22 @@ public class TurnWithPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quaternion target = Quaternion.Euler(0, mTarget.localEulerAngles.y, 0);
-        if (mTarget.localEulerAngles.y - transform.localEulerAngles.y > 0)
+        Quaternion target = Quaternion.Euler(0, mTarget.localEulerAngles.y + mCamera.localEulerAngles.y, 0);
+        var cameraAndPlayerRotation = mTarget.localEulerAngles.y + mCamera.localEulerAngles.y;
+        if (cameraAndPlayerRotation % 360 - transform.localEulerAngles.y > EPSILON)
         {
             mAnimator.SetBool("TurnRight", true);
-            Debug.Log("positive");
-        } else if (mTarget.localEulerAngles.y - transform.localEulerAngles.y < 0)
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, rSpeed);
+        }
+        else if (cameraAndPlayerRotation % 360 - transform.localEulerAngles.y < -EPSILON)
         {
             mAnimator.SetBool("TurnLeft", true);
-            Debug.Log("negative");
-        } else
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, rSpeed);
+        }
+        else
         {
             mAnimator.SetBool("TurnRight", false);
             mAnimator.SetBool("TurnLeft", false);
         }
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-        
-
-
     }
 }

@@ -8,11 +8,9 @@ public class FollowPlayer : MonoBehaviour
 
     public Transform mTarget;
 
-    float mSpeed = 1.5f;
+    float mSpeed = 2f;
     Vector3 mLookDirection;
 
-    const float EPSILON = 2.5f;
-    const float EPSILON2 = 1.5f;
     Animator mAnimator;
     void Start()
     {
@@ -22,29 +20,21 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dx = mTarget.position.x;
-        float dz = mTarget.position.z;
-        mLookDirection.x = dx + 2;
-        mLookDirection.z = dz + 2;
+        float angle = transform.localEulerAngles.y;
+        mLookDirection.x = mTarget.position.x + Mathf.Sin(angle * Mathf.Deg2Rad) * 1.5f;
+        mLookDirection.z = mTarget.position.z + Mathf.Cos(angle * Mathf.Deg2Rad) * 1.5f;
         mLookDirection.y = transform.position.y;
-        //mLookDirection.y = mTarget.position.y - transform.position.y
-        //transform.position = Vector3.Lerp(transform.position, mLookDirection, Time.time);
+ 
         if (transform.position != mLookDirection)
         {
-            transform.position = Vector3.MoveTowards(transform.position, mLookDirection, 0.1f);
-            mAnimator.SetBool("IsMoving", true);
             //Debug.Log("Moving");
+            transform.position = Vector3.MoveTowards(transform.position, mLookDirection, Time.deltaTime * mSpeed);
+            mAnimator.SetBool("IsMoving", true);
         }
         else
         {
             //Debug.Log("Not Moving");
             mAnimator.SetBool("IsMoving", false);
         }
-        if (mLookDirection.magnitude < EPSILON2)
-        {
-
-            //transform.position = Vector3.MoveTowards(transform.position, mLookDirection, 0.1f);
-        }
-        //transform.Translate(Vector3.up * ((mTarget.position.y - 2.5f)- transform.position.y) * Time.deltaTime * mSpeed);
     }
 }
