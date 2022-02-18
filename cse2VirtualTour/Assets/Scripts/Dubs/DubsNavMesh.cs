@@ -24,7 +24,7 @@ public class DubsNavMesh : MonoBehaviour
         Vector3 mLookDirection;
         mLookDirection.x = movePositionTransform.position.x + Mathf.Sin(angle * Mathf.Deg2Rad) * 2.5f;
         mLookDirection.z = movePositionTransform.position.z + Mathf.Cos(angle * Mathf.Deg2Rad) * 2.5f;
-        mLookDirection.y = movePositionTransform.position.y;
+        mLookDirection.y = transform.position.y;
       
 
         if ((transform.position - mLookDirection).magnitude > EPSILON )
