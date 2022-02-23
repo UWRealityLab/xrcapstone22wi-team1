@@ -45,6 +45,7 @@ public class DubsNavMesh : MonoBehaviour
         {
             if (Vector3.Distance(preLocation[i], preLocation[i + 1]) >= noMovementThreshold)
             {
+                //Debug.Log("Distance: " + (Vector3.Distance(preLocation[i], preLocation[i + 1])));
                 return true;
             }
        
@@ -75,8 +76,11 @@ public class DubsNavMesh : MonoBehaviour
 
         if ((transform.position - mLookDirection).magnitude > EPSILON && playerIsMoving)
         {
+            Debug.Log("Should Move: " + (transform.position - mLookDirection).magnitude);
             mAnimator.SetBool("IsMoving", true);
             navMeshAgent.destination = mLookDirection;
+            
+
         }
        
         
