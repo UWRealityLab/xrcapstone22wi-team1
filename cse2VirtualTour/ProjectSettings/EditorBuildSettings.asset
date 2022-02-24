@@ -8,18 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 6f1f6d73bccb8474691765e559aa1762
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/InterviewRoom.unity
-    guid: c3f9bad6b6f5c421d9a449a6f1acd299
-  - enabled: 1
-    path: Assets/Scenes/CopyMain.unity
-    guid: c3ddb6b8e671b4482ba10f762d091528
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4161911b4660b46d69583ceb270d5411, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 32bfb8564722143feadd313dbb2767f8, type: 2}
