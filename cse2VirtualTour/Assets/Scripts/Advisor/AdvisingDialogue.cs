@@ -53,12 +53,12 @@ public class AdvisingDialogue : MonoBehaviour
         ShowNextButton(() => { AskTopic(questions); });
     }
 
-    private void ShowAnswer(string answer)
+    private void ShowHighSchoolAnswer(string answer)
     {
-        StartCoroutine(ShowAnswer2(answer));
+        StartCoroutine(ShowHighSchoolAnswer2(answer));
     }
 
-    private IEnumerator ShowAnswer2(string answer)
+    private IEnumerator ShowHighSchoolAnswer2(string answer)
     {
         ClearOptionWrapper();
         yield return StartCoroutine(PrintMessage(answer));
@@ -83,6 +83,21 @@ public class AdvisingDialogue : MonoBehaviour
         ShowNextButton(() => { AskTopic(questions); });
     }
 
+    private void ShowTransferAnswer(string answer)
+    {
+        StartCoroutine(ShowTransferAnswer2(answer));
+    }
+
+    private IEnumerator ShowTransferAnswer2(string answer)
+    {
+        ClearOptionWrapper();
+        yield return StartCoroutine(PrintMessage(answer));
+        SetOptionWrapperLayout(true, TextAnchor.MiddleRight);
+        Dictionary<string, UnityEngine.Events.UnityAction> questions = getTransferQuestionList();
+
+        CreateButton("Back", () => { AskTopic(questions); });
+    }
+
     // HELPER FUNCTIONS
 
     private void AskTopic(Dictionary<string, UnityEngine.Events.UnityAction> questions)
@@ -104,9 +119,9 @@ public class AdvisingDialogue : MonoBehaviour
     private Dictionary<string, UnityEngine.Events.UnityAction> getHighSchoolQuestionList()
     {
         Dictionary<string, UnityEngine.Events.UnityAction> questions = new Dictionary<string, UnityEngine.Events.UnityAction>();
-        questions.Add(Message.HS_Q_ADMIN_RATE, () => { ShowAnswer(Message.HS_A_ADMIN_RATE); });
-        questions.Add(Message.HS_Q_PROGRAM_EXP, () => { ShowAnswer(Message.HS_A_PROGRAM_EXP); });
-        questions.Add(Message.HS_Q_GPA, () => { ShowAnswer(Message.HS_A_GPA); });
+        questions.Add(Message.HS_Q_ADMIN_RATE, () => { ShowHighSchoolAnswer(Message.HS_A_ADMIN_RATE); });
+        questions.Add(Message.HS_Q_PROGRAM_EXP, () => { ShowHighSchoolAnswer(Message.HS_A_PROGRAM_EXP); });
+        questions.Add(Message.HS_Q_GPA, () => { ShowHighSchoolAnswer(Message.HS_A_GPA); });
         return questions;
     }
 
@@ -114,9 +129,9 @@ public class AdvisingDialogue : MonoBehaviour
     private Dictionary<string, UnityEngine.Events.UnityAction> getTransferQuestionList()
     {
         Dictionary<string, UnityEngine.Events.UnityAction> questions = new Dictionary<string, UnityEngine.Events.UnityAction>();
-        questions.Add(Message.TF_Q_GPA, () => { ShowAnswer(Message.TF_A_GPA); });
-        questions.Add(Message.TF_Q_APPLY, () => { ShowAnswer(Message.TF_A_APPLY); });
-        questions.Add(Message.TF_Q_REAPPLY, () => { ShowAnswer(Message.TF_A_REAPPLY); });
+        questions.Add(Message.TF_Q_GPA, () => { ShowTransferAnswer(Message.TF_A_GPA); });
+        questions.Add(Message.TF_Q_APPLY, () => { ShowTransferAnswer(Message.TF_A_APPLY); });
+        questions.Add(Message.TF_Q_REAPPLY, () => { ShowTransferAnswer(Message.TF_A_REAPPLY); });
         return questions;
     }
 
@@ -159,7 +174,7 @@ public class AdvisingDialogue : MonoBehaviour
         GameObject button = DefaultControls.CreateButton(new DefaultControls.Resources());
         button.transform.SetParent(optionsWrapper.transform, false);
         button.transform.GetChild(0).GetComponent<Text>().text = text;
-        button.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 30);
+        button.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 45);
         button.GetComponent<Button>().onClick.AddListener(onClick);
         return button;
     }
