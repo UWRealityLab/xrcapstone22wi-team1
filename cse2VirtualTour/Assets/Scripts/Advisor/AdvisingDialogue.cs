@@ -55,23 +55,17 @@ public class AdvisingDialogue : MonoBehaviour
 
     private void ShowAnswer(string answer)
     {
-        Debug.Log(answer);
         StartCoroutine(ShowAnswer2(answer));
     }
 
     private IEnumerator ShowAnswer2(string answer)
     {
         ClearOptionWrapper();
-        yield return StartCoroutine(ShowAdmissionData2(answer));
+        yield return StartCoroutine(PrintMessage(answer));
         SetOptionWrapperLayout(true, TextAnchor.MiddleRight);
         Dictionary<string, UnityEngine.Events.UnityAction> questions = getHighSchoolQuestionList();
 
         CreateButton("Back", () => { AskTopic(questions); });
-    }
-
-    private IEnumerator ShowAdmissionData2(string answer)
-    {
-        yield return StartCoroutine(PrintMessage(answer));
     }
 
     // TRANSFER SECTION
@@ -79,12 +73,14 @@ public class AdvisingDialogue : MonoBehaviour
     void ShowTransferIntro()
     {
         ClearOptionWrapper();
-        ShowTransferIntro2();
+        StartCoroutine(ShowTransferIntro2());
     }
 
-    private void ShowTransferIntro2()
+    private IEnumerator ShowTransferIntro2()
     {
-        StartCoroutine(PrintMessage(Message.TRANSFER_INTRO));
+        yield return StartCoroutine(PrintMessage(Message.TRANSFER_INTRO));
+        Dictionary<string, UnityEngine.Events.UnityAction> questions = getTransferQuestionList();
+        ShowNextButton(() => { AskTopic(questions); });
     }
 
     // HELPER FUNCTIONS
@@ -111,6 +107,16 @@ public class AdvisingDialogue : MonoBehaviour
         questions.Add(Message.HS_Q_ADMIN_RATE, () => { ShowAnswer(Message.HS_A_ADMIN_RATE); });
         questions.Add(Message.HS_Q_PROGRAM_EXP, () => { ShowAnswer(Message.HS_A_PROGRAM_EXP); });
         questions.Add(Message.HS_Q_GPA, () => { ShowAnswer(Message.HS_A_GPA); });
+        return questions;
+    }
+
+
+    private Dictionary<string, UnityEngine.Events.UnityAction> getTransferQuestionList()
+    {
+        Dictionary<string, UnityEngine.Events.UnityAction> questions = new Dictionary<string, UnityEngine.Events.UnityAction>();
+        questions.Add(Message.TF_Q_GPA, () => { ShowAnswer(Message.TF_A_GPA); });
+        questions.Add(Message.TF_Q_APPLY, () => { ShowAnswer(Message.TF_A_APPLY); });
+        questions.Add(Message.TF_Q_REAPPLY, () => { ShowAnswer(Message.TF_A_REAPPLY); });
         return questions;
     }
 

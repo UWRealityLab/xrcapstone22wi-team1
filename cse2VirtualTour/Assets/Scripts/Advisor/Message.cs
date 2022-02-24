@@ -17,6 +17,10 @@ public static class Message
 
     // Transfer Student
     public const string TRANSFER_INTRO = "Thank you for your interest in the Paul G. Allen School of Computer Science & Engineering.";
-
-
+    public const string TF_Q_GPA = "Is there a minimum GPA to be competitive for admission?";
+    public const string TF_A_GPA = "No. Due to the Allen School’s holistic admissions review process, there is no minimum GPA required for admission.\nThe average incoming GPA for Washington state resident transfer admits is 3.75 or higher.\nThe average incoming GPA for domestic non-resident and international transfer admits is 3.9 or higher.";
+    public const string TF_Q_APPLY = "Can I apply before I’ve completed two years at a community college or university?";
+    public const string TF_A_APPLY = "Yes. If you have met UW’s minimum admissions requirements and will fulfill the Allen School’s prerequisite requirements in time, you are welcome to apply for transfer admission.";
+    public const string TF_Q_REAPPLY = "Can I reapply to the Allen School as a transfer applicant if I have been denied before?";
+    public const string TF_A_REAPPLY = "Yes. The Allen School does not have a limit on the number of times a transfer applicant can apply for admission.";
 }
