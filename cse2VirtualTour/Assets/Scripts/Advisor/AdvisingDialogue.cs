@@ -25,6 +25,7 @@ public class AdvisingDialogue : MonoBehaviour
 
     private IEnumerator AskUserRole()
     {
+        ClearOptionWrapper();
         yield return StartCoroutine(PrintMessage(Message.ASK_ROLE));
         ShowRoleOptions();
     }
@@ -50,7 +51,9 @@ public class AdvisingDialogue : MonoBehaviour
         yield return StartCoroutine(PrintMessage(Message.HIGH_SCHOOL_INTRO));
 
         Dictionary<string, UnityEngine.Events.UnityAction> questions = getHighSchoolQuestionList();
-        ShowNextButton(() => { AskTopic(questions); });
+        SetOptionWrapperLayout(true, TextAnchor.MiddleCenter);
+        CreateButton("Back", () => { StartCoroutine(AskUserRole()); });
+        CreateButton("Next", () => { AskTopic(questions); });
     }
 
     private void ShowHighSchoolAnswer(string answer)
@@ -80,7 +83,9 @@ public class AdvisingDialogue : MonoBehaviour
     {
         yield return StartCoroutine(PrintMessage(Message.TRANSFER_INTRO));
         Dictionary<string, UnityEngine.Events.UnityAction> questions = getTransferQuestionList();
-        ShowNextButton(() => { AskTopic(questions); });
+        SetOptionWrapperLayout(true, TextAnchor.MiddleCenter);
+        CreateButton("Back", () => { StartCoroutine(AskUserRole()); });
+        CreateButton("Next", () => { AskTopic(questions); });
     }
 
     private void ShowTransferAnswer(string answer)
@@ -114,6 +119,7 @@ public class AdvisingDialogue : MonoBehaviour
         {
             CreateButton(entry.Key, entry.Value, 450);
         }
+        CreateButton("Back", () => { StartCoroutine(AskUserRole()); });
     }
 
     private Dictionary<string, UnityEngine.Events.UnityAction> getHighSchoolQuestionList()
@@ -122,6 +128,9 @@ public class AdvisingDialogue : MonoBehaviour
         questions.Add(Message.HS_Q_ADMIN_RATE, () => { ShowHighSchoolAnswer(Message.HS_A_ADMIN_RATE); });
         questions.Add(Message.HS_Q_PROGRAM_EXP, () => { ShowHighSchoolAnswer(Message.HS_A_PROGRAM_EXP); });
         questions.Add(Message.HS_Q_GPA, () => { ShowHighSchoolAnswer(Message.HS_A_GPA); });
+        questions.Add(Message.HS_Q_NOT_ADMIT, () => { ShowHighSchoolAnswer(Message.HS_A_NOT_ADMIT); });
+        questions.Add(Message.HS_Q_CHANGE_MAJOR, () => { ShowHighSchoolAnswer(Message.HS_A_CHANGE_MAJOR); });
+
         return questions;
     }
 
@@ -129,9 +138,11 @@ public class AdvisingDialogue : MonoBehaviour
     private Dictionary<string, UnityEngine.Events.UnityAction> getTransferQuestionList()
     {
         Dictionary<string, UnityEngine.Events.UnityAction> questions = new Dictionary<string, UnityEngine.Events.UnityAction>();
+        questions.Add(Message.TF_Q_TIMELINE, () => { ShowTransferAnswer(Message.TF_A_TIMELINE); });
         questions.Add(Message.TF_Q_GPA, () => { ShowTransferAnswer(Message.TF_A_GPA); });
         questions.Add(Message.TF_Q_APPLY, () => { ShowTransferAnswer(Message.TF_A_APPLY); });
         questions.Add(Message.TF_Q_REAPPLY, () => { ShowTransferAnswer(Message.TF_A_REAPPLY); });
+        questions.Add(Message.TF_Q_REVIEW, () => { ShowTransferAnswer(Message.TF_A_REVIEW); });
         return questions;
     }
 
@@ -172,10 +183,15 @@ public class AdvisingDialogue : MonoBehaviour
     private GameObject CreateButton(string text, UnityEngine.Events.UnityAction onClick, int width = 160)
     {
         GameObject button = DefaultControls.CreateButton(new DefaultControls.Resources());
+        Transform textTransform = button.transform.GetChild(0);
+        RectTransform textRT = textTransform.GetComponent<RectTransform>();
         button.transform.SetParent(optionsWrapper.transform, false);
-        button.transform.GetChild(0).GetComponent<Text>().text = text;
         button.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 45);
         button.GetComponent<Button>().onClick.AddListener(onClick);
+        textTransform.GetComponent<Text>().text = text;
+        textRT.offsetMin = new Vector2(5, textRT.offsetMin.y);
+        textRT.offsetMax = new Vector2(-5, textRT.offsetMax.y);
+
         return button;
     }
 
