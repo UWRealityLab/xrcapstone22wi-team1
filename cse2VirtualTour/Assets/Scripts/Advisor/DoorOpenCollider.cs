@@ -15,7 +15,6 @@ public class DoorOpenCollider : MonoBehaviour
     void Start()
     {
         doorOpened = false;
-        ShowAdvisorWelcomeMessage();
     }
 
     void OnTriggerEnter(Collider collider)
