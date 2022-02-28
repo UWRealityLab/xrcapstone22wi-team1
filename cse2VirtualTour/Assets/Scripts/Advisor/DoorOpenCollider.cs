@@ -9,6 +9,7 @@ public class DoorOpenCollider : MonoBehaviour
     public GameObject rightDoor;
     public GameObject dialogueHandler;
     public GameObject contentCanvas;
+    public GameObject advisor;
     public bool doorOpened;
     
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class DoorOpenCollider : MonoBehaviour
     private void ShowAdvisorWelcomeMessage()
     {
         contentCanvas.SetActive(true);
+        advisor.GetComponent<Advisor>().Wave();
         dialogueHandler.GetComponent<AdvisingDialogue>().ShowWelcomeMessage();
     }
 
