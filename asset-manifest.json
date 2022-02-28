@@ -1,9 +1,10 @@
 {
   "files": {
     "main.css": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css",
-    "main.js": "/xrcapstone22wi-team1/static/js/main.d3863798.js",
+    "main.js": "/xrcapstone22wi-team1/static/js/main.6a4e273d.js",
     "static/media/banner.jpeg": "/xrcapstone22wi-team1/static/media/banner.2e0f242842736f41bb2d.jpeg",
     "static/media/week2.md": "/xrcapstone22wi-team1/static/media/week2.7912f50b149764d240a7.md",
+    "static/media/week7.md": "/xrcapstone22wi-team1/static/media/week7.3618fc791e2bfee89c48.md",
     "static/media/week4.md": "/xrcapstone22wi-team1/static/media/week4.e999bc7974b42e1318d4.md",
     "static/media/week6.md": "/xrcapstone22wi-team1/static/media/week6.52e6bf29ea91aff7be0b.md",
     "static/media/week3.md": "/xrcapstone22wi-team1/static/media/week3.e10e6491347fb0713adf.md",
@@ -11,10 +12,10 @@
     "static/media/week1.md": "/xrcapstone22wi-team1/static/media/week1.a7432ea45324b097cb6f.md",
     "static/media/week5.md": "/xrcapstone22wi-team1/static/media/week5.7158f04268aa790d9993.md",
     "main.a1fe03a4.css.map": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css.map",
-    "main.d3863798.js.map": "/xrcapstone22wi-team1/static/js/main.d3863798.js.map"
+    "main.6a4e273d.js.map": "/xrcapstone22wi-team1/static/js/main.6a4e273d.js.map"
   },
   "entrypoints": [
     "static/css/main.a1fe03a4.css",
-    "static/js/main.d3863798.js"
+    "static/js/main.6a4e273d.js"
   ]
 }
