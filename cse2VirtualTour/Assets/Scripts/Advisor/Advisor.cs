@@ -8,7 +8,7 @@ public class Advisor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Wave();
     }
 
     // Update is called once per frame
@@ -24,15 +24,28 @@ public class Advisor : MonoBehaviour
 
     public IEnumerator Wave2()
     {
-        Vector3 originalUpperArmAngle = GetUpperLeftArm().localEulerAngles;
-        Vector3 originalLowerArmAngle = GetLowerLeftArm().localEulerAngles;
-        Vector3 upperArmAngle = new Vector3(-2, 86.9f, -34.8f);
-        Vector3 lowerArmAngle = new Vector3(-4.785f, 0, -34.2f);
+        Debug.Log(GetUpperLeftArm().eulerAngles);
+        Debug.Log(GetUpperLeftArm().localEulerAngles);
+        Debug.Log(GetUpperLeftArm().rotation);
+        Debug.Log(GetUpperLeftArm().position);
+        Debug.Log(GetUpperLeftArm().localPosition);
+        Debug.Log(GetUpperLeftArm().GetComponent<Transform>().position);
+        Debug.Log(GetUpperLeftArm().GetComponent<Transform>().rotation);
+
+        Vector3 originalUpperArmAngle = GetVectorWithNegativeValue(GetUpperLeftArm().localEulerAngles);
+        Vector3 originalLowerArmAngle = GetVectorWithNegativeValue(GetLowerLeftArm().localEulerAngles);
+        Vector3 spinePosition = new Vector3(0.008f, 0.062f, -0.006f);
+        Vector3 spineRotation = new Vector3(-5.254f, 0, -14.135f);
+        Vector3 upperArmAngle = new Vector3(-2, 86.9f, -34.8f) - originalUpperArmAngle;
+        Vector3 lowerArmAngle = new Vector3(-4.785f, 0, -34.2f) - originalLowerArmAngle;
+
         int frame = 5;
-        for (int i = 0; i < frame; i++)
+
+        for (int i = 1; i <= frame; i++)
         {
-            GetUpperLeftArm().localEulerAngles = upperArmAngle / frame * i;
-            GetLowerLeftArm().localEulerAngles = lowerArmAngle / frame * i;
+            GetUpperLeftArm().localEulerAngles = originalUpperArmAngle + upperArmAngle * i / frame;
+            GetLowerLeftArm().localEulerAngles = originalLowerArmAngle + lowerArmAngle / frame * i;
+
             yield return 0;
         }
         frame = 40;
@@ -41,7 +54,7 @@ public class Advisor : MonoBehaviour
             GetLowerLeftArm().localEulerAngles = new Vector3(-4.785f, 0, Mathf.PingPong(Time.time * 60, 20.8f) - 55);
             yield return 0;
         }
-
+        yield return 0;
     }
 
     public void Reset()
@@ -49,14 +62,19 @@ public class Advisor : MonoBehaviour
 
     }
 
+    private Transform GetSpine1()
+    {
+        return transform.Find("Pelvis/Spine_01");
+    }
+
     private Transform GetUpperLeftArm()
     {
-        return transform.Find("Pelvis/Spine_01/Spine_02/Spine_03/Clavicle_L/Upperarm_L");
+        return GetSpine1().Find("Spine_02/Spine_03/Clavicle_L/Upperarm_L");
     }
 
     private Transform GetUpperRightArm()
     {
-        return transform.Find("Pelvis/Spine_01/Spine_02/Spine_03/Clavicle_R/Upperarm_R");
+        return GetSpine1().Find("Spine_02/Spine_03/Clavicle_R/Upperarm_R");
     }
 
     private Transform GetLowerLeftArm()
@@ -82,5 +100,14 @@ public class Advisor : MonoBehaviour
     private void SaveOriginalTransform()
     {
 
+    }
+
+    private Vector3 GetVectorWithNegativeValue(Vector3 vector)
+    {
+        vector.x = (vector.x > 180) ? vector.x - 360 : vector.x;
+        vector.y = (vector.y > 180) ? vector.y - 360 : vector.y;
+        vector.z = (vector.z > 180) ? vector.z - 360 : vector.z;
+
+        return vector;
     }
 }
