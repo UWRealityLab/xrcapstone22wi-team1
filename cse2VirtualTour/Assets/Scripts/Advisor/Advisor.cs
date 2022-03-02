@@ -33,6 +33,20 @@ public class Advisor : MonoBehaviour
         }
     }
 
+    public void Bow()
+    {
+        StartCoroutine(Bow2());
+    }
+
+    private IEnumerator Bow2()
+    {
+        Transform spine1 = GetSpine1();
+        Vector3 spineAngle = new Vector3(40, 0, 0);
+        Dictionary<Transform, Vector3> rotating = new Dictionary<Transform, Vector3>();
+        rotating[spine1] = spineAngle;
+        StartCoroutine(Rotate(rotating, 6));
+        yield return new WaitForSeconds(1.5f);
+        Reset(6);
     }
 
     public void Wave()

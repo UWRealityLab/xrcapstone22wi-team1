@@ -11,6 +11,13 @@ public class AdvisingDialogue : MonoBehaviour
 
     public TextMeshProUGUI dialogue;
     public GameObject optionsWrapper;
+    public GameObject advisorObject;
+    private Advisor advisor;
+
+    private void Start()
+    {
+        advisor = advisorObject.GetComponent<Advisor>();
+    }
 
     public void ShowWelcomeMessage()
     {
@@ -48,6 +55,7 @@ public class AdvisingDialogue : MonoBehaviour
 
     private IEnumerator ShowHighSchoolIntro2()
     {
+        advisor.Bow();
         yield return StartCoroutine(PrintMessage(Message.HIGH_SCHOOL_INTRO));
 
         Dictionary<string, UnityEngine.Events.UnityAction> questions = getHighSchoolQuestionList();
@@ -81,6 +89,7 @@ public class AdvisingDialogue : MonoBehaviour
 
     private IEnumerator ShowTransferIntro2()
     {
+        advisor.Bow();
         yield return StartCoroutine(PrintMessage(Message.TRANSFER_INTRO));
         Dictionary<string, UnityEngine.Events.UnityAction> questions = getTransferQuestionList();
         SetOptionWrapperLayout(true, TextAnchor.MiddleCenter);
