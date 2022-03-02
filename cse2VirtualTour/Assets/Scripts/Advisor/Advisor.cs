@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class Advisor : MonoBehaviour
 {
+    private Dictionary<Transform, Vector3> originalPositions;
+    private Dictionary<Transform, Vector3> originalRotations;
 
     // Start is called before the first frame update
     void Start()
     {
-        Wave();
+        originalPositions = new Dictionary<Transform, Vector3>();
+        originalRotations = new Dictionary<Transform, Vector3>();
+        Transform pelvis = transform.GetChild(1);
+        originalPositions.Add(transform, transform.position);
+        originalRotations.Add(transform, GetVectorWithNegativeValue(transform.localEulerAngles));
+        originalPositions.Add(pelvis, pelvis.position);
+        originalRotations.Add(pelvis, GetVectorWithNegativeValue(pelvis.localEulerAngles));
+        getAllChildOriginalTransform(pelvis);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void getAllChildOriginalTransform(Transform current)
     {
-        
+        if (current.childCount > 0)
+        {
+            foreach (Transform child in current)
+            {
+                originalPositions.Add(child, child.position);
+                originalRotations.Add(child, GetVectorWithNegativeValue(child.localEulerAngles));
+                getAllChildOriginalTransform(child);
+            }
+        }
+    }
+
     }
 
     public void Wave()
@@ -22,44 +40,131 @@ public class Advisor : MonoBehaviour
         StartCoroutine(Wave2());
     }
 
-    public IEnumerator Wave2()
+    private IEnumerator Wave2()
     {
-        Debug.Log(GetUpperLeftArm().eulerAngles);
-        Debug.Log(GetUpperLeftArm().localEulerAngles);
-        Debug.Log(GetUpperLeftArm().rotation);
-        Debug.Log(GetUpperLeftArm().position);
-        Debug.Log(GetUpperLeftArm().localPosition);
-        Debug.Log(GetUpperLeftArm().GetComponent<Transform>().position);
-        Debug.Log(GetUpperLeftArm().GetComponent<Transform>().rotation);
+        Transform upperLeftArm = GetUpperLeftArm();
+        Transform lowerLeftArm = GetLowerLeftArm();
+        Transform spine1 = GetSpine1();
 
-        Vector3 originalUpperArmAngle = GetVectorWithNegativeValue(GetUpperLeftArm().localEulerAngles);
-        Vector3 originalLowerArmAngle = GetVectorWithNegativeValue(GetLowerLeftArm().localEulerAngles);
-        Vector3 spinePosition = new Vector3(0.008f, 0.062f, -0.006f);
-        Vector3 spineRotation = new Vector3(-5.254f, 0, -14.135f);
-        Vector3 upperArmAngle = new Vector3(-2, 86.9f, -34.8f) - originalUpperArmAngle;
-        Vector3 lowerArmAngle = new Vector3(-4.785f, 0, -34.2f) - originalLowerArmAngle;
-
-        int frame = 5;
-
-        for (int i = 1; i <= frame; i++)
-        {
-            GetUpperLeftArm().localEulerAngles = originalUpperArmAngle + upperArmAngle * i / frame;
-            GetLowerLeftArm().localEulerAngles = originalLowerArmAngle + lowerArmAngle / frame * i;
-
-            yield return 0;
-        }
-        frame = 40;
+        Vector3 spineAngle = new Vector3(-5.254f, 0, -14.135f);
+        Vector3 upperArmAngle = new Vector3(-2, 86.9f, -34.8f);
+        Vector3 lowerArmAngle = new Vector3(-4.785f, 0, -34.2f);
+        
+        Dictionary<Transform, Vector3> rotating = new Dictionary<Transform, Vector3>();
+        rotating[upperLeftArm] = upperArmAngle;
+        rotating[lowerLeftArm] = lowerArmAngle;
+        rotating[spine1] = spineAngle;
+        Debug.Log(upperArmAngle);
+        StartCoroutine(Rotate(rotating, 5));
+        
+        int frame = 30;
         for (int i = 0; i < frame; i++)
         {
             GetLowerLeftArm().localEulerAngles = new Vector3(-4.785f, 0, Mathf.PingPong(Time.time * 60, 20.8f) - 55);
             yield return 0;
         }
+        yield return new WaitForSeconds(0.5f);
+
+        Reset(8);
         yield return 0;
     }
 
-    public void Reset()
+    public void Reset(int frame)
     {
+        Queue<Transform> queue = new Queue<Transform>();
+        Dictionary<Transform, Vector3> differecePosition = new Dictionary<Transform, Vector3>();
+        Dictionary<Transform, Vector3> differeceRotation = new Dictionary<Transform, Vector3>();
+        Transform pelvis = transform.GetChild(1);
+        queue.Enqueue(pelvis);
+        while (queue.Count != 0)
+        {
+            Transform current = queue.Dequeue();
+            if (current.position != originalPositions[current])
+            {
+                Debug.Log(current.name + " different position");
+                Debug.Log(current.position);
+                Debug.Log(originalPositions[current]);
+                differecePosition[current] = originalPositions[current];
+            }
 
+            if (current.localEulerAngles != originalRotations[current])
+            {
+                Debug.Log(current.name + " different rotation");
+                Debug.Log(current.localEulerAngles);
+                Debug.Log(originalRotations[current]);
+                differeceRotation[current] = originalRotations[current];
+            }
+
+            foreach (Transform child in current)
+            {
+                queue.Enqueue(child);
+            }
+        }
+
+        // check if need to reset whole object
+        if (transform.position != originalPositions[transform])
+        {
+            Debug.Log(transform.name + " different position");
+            Debug.Log(transform.position);
+            Debug.Log(originalPositions[transform]);
+            differecePosition[transform] = originalPositions[transform];
+        }
+
+        if (transform.localEulerAngles != originalRotations[transform])
+        {
+            Debug.Log(transform.name + " different rotation");
+            Debug.Log(transform.localEulerAngles);
+            Debug.Log(originalRotations[transform]);
+            differeceRotation[transform] = originalRotations[transform];
+        }
+        //StartCoroutine(Move(differecePosition, 5));
+        StartCoroutine(Rotate(differeceRotation, frame));
+    }
+
+    private IEnumerator Move(Dictionary<Transform, Vector3> transformsToFinalVectors, int frame)
+    {
+        List<Vector3> originalPosition = new List<Vector3>();
+
+        // finalVectors will actually be the vectors difference
+        int i = 0;
+        foreach (Transform t in new List<Transform>(transformsToFinalVectors.Keys))
+        {
+            originalPosition.Add(GetVectorWithNegativeValue(t.position));
+            transformsToFinalVectors[t] = transformsToFinalVectors[t] - originalPosition[i++];
+        }
+
+        for (i = 1; i <= frame; i++)
+        {
+            int j = 0;
+            foreach (Transform t in new List<Transform>(transformsToFinalVectors.Keys))
+            {
+                t.position = originalPosition[j++] + transformsToFinalVectors[t] * i / frame;
+            }
+            yield return 0;
+        }
+    }
+
+    private IEnumerator Rotate(Dictionary<Transform, Vector3> transformsToFinalVectors, int frame)
+    {
+        List<Vector3> originalAngles = new List<Vector3>();
+
+        // finalVectors will actually be the vectors difference
+        int i = 0;
+        foreach (Transform t in new List<Transform>(transformsToFinalVectors.Keys))
+        {
+            originalAngles.Add(GetVectorWithNegativeValue(t.localEulerAngles));
+            transformsToFinalVectors[t] = transformsToFinalVectors[t] - originalAngles[i++];
+        }
+
+        for (i = 1; i <= frame; i++)
+        {
+            int j = 0;
+            foreach (Transform t in new List<Transform>(transformsToFinalVectors.Keys))
+            {
+                t.localEulerAngles = originalAngles[j++] + transformsToFinalVectors[t] * i / frame;
+            }
+            yield return 0;
+        }
     }
 
     private Transform GetSpine1()
@@ -95,11 +200,6 @@ public class Advisor : MonoBehaviour
     private Transform GetRightHand()
     {
         return GetLowerRightArm().Find("Hand_R");
-    }
-
-    private void SaveOriginalTransform()
-    {
-
     }
 
     private Vector3 GetVectorWithNegativeValue(Vector3 vector)
