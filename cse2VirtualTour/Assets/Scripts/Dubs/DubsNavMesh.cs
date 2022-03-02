@@ -17,8 +17,8 @@ public class DubsNavMesh : MonoBehaviour
     private bool playerIsMoving;
     private bool dubsIsMoving;
 
-    Vector3[] playerPreviousLocations = new Vector3[5];
-    Vector3[] dubsPreviousLocations = new Vector3[5];
+    Vector3[] playerPreviousLocations = new Vector3[3];
+    Vector3[] dubsPreviousLocations = new Vector3[2];
 
     private void Awake()
     {
