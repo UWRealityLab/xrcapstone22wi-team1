@@ -16,7 +16,6 @@ public class DoorOpenCollider : MonoBehaviour
     void Start()
     {
         doorOpened = false;
-        //ShowAdvisorWelcomeMessage();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -29,9 +28,9 @@ public class DoorOpenCollider : MonoBehaviour
     
     IEnumerator OpenAdvisingDoor()
     {
-        Vector3 move = Vector3.right * 0.1f;
+        Vector3 move = Vector3.right * 0.05f;
         float totalMovement = 2; // distance to open the door
-        float frames = totalMovement / 0.1f;
+        float frames = totalMovement / 0.05f;
         int count = 0;
         for (int i = 0; i < frames; i++)
         {

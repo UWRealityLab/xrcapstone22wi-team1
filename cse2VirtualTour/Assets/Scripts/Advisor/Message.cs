@@ -13,9 +13,9 @@ public static class Message
     public const string HS_Q_PROGRAM_EXP = "Do I need to have programming experience in high school?";
     public const string HS_A_PROGRAM_EXP = "No, we do not expect freshman applicants to have any programming experience. We look for those students who demonstrate academic excellence and leadership. We look for students with strong academic motivation, who have excelled in math, science, English, and other writing courses.";
     public const string HS_Q_GPA = "Is there a minimum GPA to be competitive for admission?";
-    public const string HS_A_GPA = "The Office of Admissions uses a holistic review process to make DTM decisions. Most students offered DTM have a high school GPA of 3.85-4.00 (unweighted).";
+    public const string HS_A_GPA = "The Office of Admissions uses a holistic review process to make DTM decisions. Most students offered DTM have a high school unweighted GPA of 3.85-4.00.";
     public const string HS_Q_NOT_ADMIT = "What happens if I am not offered admission through the DTM pathway?";
-    public const string HS_A_NOT_ADMIT = "Many applicants who select Computer Science or Computer Engineering on their UW application will be admitted to the UW but not offered DTM to the Allen School.\nHowever, if you are absolutely certain that you want to major in Computer Science or Computer Engineering and do not receive a DTM offer, you should strongly consider attending another university.";
+    public const string HS_A_NOT_ADMIT = "Many applicants who select Computer Science or Computer Engineering on their UW application will be admitted to UW but not offered DTM to the Allen School.\nHowever, if you are absolutely certain that you want to major in Computer Science or Computer Engineering and do not receive a DTM offer, you should strongly consider attending another university.";
     public const string HS_Q_CHANGE_MAJOR = "Can I purse a different major even if I am offered DTM?";
     public const string HS_A_CHANGE_MAJOR = "You can drop your Allen School major at any time if you decide it's not the right fit. We anticipate that DTM students, like all students at the University, will spend their first year or two exploring many options.";
 
