@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,18 @@ public class DoorOpenCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.name == "XR Origin Collider" && !doorOpened)
-        {
-            StartCoroutine(OpenAdvisingDoor());
+        if(collider.name == "XR Origin Collider")
+        {   
+            if (!doorOpened)
+            {
+                StartCoroutine(OpenAdvisingDoor());
+            }
+
+       
         }
     }
-    
+
+
     IEnumerator OpenAdvisingDoor()
     {
         Vector3 move = Vector3.right * 0.1f;
@@ -47,6 +54,7 @@ public class DoorOpenCollider : MonoBehaviour
     {
         contentCanvas.SetActive(true);
         dialogueHandler.GetComponent<AdvisingDialogue>().ShowWelcomeMessage();
+        
     }
 
 }
