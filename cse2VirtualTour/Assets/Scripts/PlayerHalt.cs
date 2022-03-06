@@ -24,7 +24,7 @@ public class PlayerHalt : MonoBehaviour
 
                     Debug.Log("Player Enter Adv Center");
                     enterAdvCenter = true;
-                    StartCoroutine(HaltPlayer(11));
+                    StartCoroutine(HaltPlayer(16));
                 }
 
                 break;
@@ -32,7 +32,7 @@ public class PlayerHalt : MonoBehaviour
                 if (!enterInteracWall)
                 {
                     enterInteracWall = true;
-                    StartCoroutine(HaltPlayer(14));
+                    StartCoroutine(HaltPlayer(20));
                 }
                 break;
             case "InterviewRoom":

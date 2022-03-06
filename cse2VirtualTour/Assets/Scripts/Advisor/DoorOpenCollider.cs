@@ -26,9 +26,7 @@ public class DoorOpenCollider : MonoBehaviour
             if (!doorOpened)
             {
                 StartCoroutine(OpenAdvisingDoor());
-            }
-
-       
+            } 
         }
     }
 
@@ -48,7 +46,7 @@ public class DoorOpenCollider : MonoBehaviour
             
         }
         doorOpened = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         ShowAdvisorWelcomeMessage();
     }
 
