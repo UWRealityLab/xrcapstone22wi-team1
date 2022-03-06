@@ -21,12 +21,10 @@ public class PlayerHalt : MonoBehaviour
             case "DoorOpenCollider":
                 if (!enterAdvCenter)
                 {
-                    enterAdvCenter = true;
-                   
-                    
-                    StartCoroutine(HaltPlayer(8));
-                 
 
+                    Debug.Log("Player Enter Adv Center");
+                    enterAdvCenter = true;
+                    StartCoroutine(HaltPlayer(8));
                 }
 
                 break;
@@ -34,18 +32,14 @@ public class PlayerHalt : MonoBehaviour
                 if (!enterInteracWall)
                 {
                     enterInteracWall = true;
-                   
                     StartCoroutine(HaltPlayer(12));
-                  
                 }
                 break;
             case "InterviewRoom":
                 if (!enterInterRoom)
                 {
                     enterInterRoom = true;
-                   
                     StartCoroutine(HaltPlayer(8));
-                    
                 }
                 break;
             default:
@@ -67,17 +61,17 @@ public class PlayerHalt : MonoBehaviour
     {
         if (!enterInteracWall)
         {
-            Debug.Log("Draw path to interactive wall");
+            //Debug.Log("Draw path to interactive wall");
             GetComponent<DrawPath>().calculatePath(interacWall.position);
         }
         else if (!enterAdvCenter)
         {
-            Debug.Log("Draw path to advising center");
+            //Debug.Log("Draw path to advising center");
             GetComponent<DrawPath>().calculatePath(advCenter.position);
         }
         else if (!enterInterRoom)
         {
-            Debug.Log("Draw path to interview room");
+            //Debug.Log("Draw path to interview room");
             GetComponent<DrawPath>().calculatePath(intervRoom.position);
         } else
         {

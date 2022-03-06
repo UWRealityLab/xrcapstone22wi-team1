@@ -48,6 +48,7 @@ public class DoorOpenCollider : MonoBehaviour
             
         }
         doorOpened = true;
+        yield return new WaitForSeconds(10);
         ShowAdvisorWelcomeMessage();
     }
 

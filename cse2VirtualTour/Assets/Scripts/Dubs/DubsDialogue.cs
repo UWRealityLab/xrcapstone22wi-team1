@@ -12,9 +12,8 @@ public class DubsDialogue : MonoBehaviour
     public TextMeshProUGUI dialogue;
     public GameObject dubsDialogueBubble;
     public GameObject dubs;
-    public GameObject locomotion;
 
-
+    public AudioSource audioSource;
     private bool enterAdvCenter;
     private bool enterInteracWall;
     private bool enterInterRoom;
@@ -65,9 +64,9 @@ public class DubsDialogue : MonoBehaviour
     }
     public IEnumerator PrintMessage(string message)
     {
-       
+
         dialogue.text = "";
-        
+        audioSource.Play();
         dubs.GetComponent<DubsNavMesh>().messagePopUp = true;
         foreach (string str in message.Split(' '))
         {
@@ -77,14 +76,17 @@ public class DubsDialogue : MonoBehaviour
         yield return new WaitForSeconds(1);
         
     }
+
+ 
     void OnTriggerEnter(Collider collider)
     {
-        
+        Debug.Log("Collider name: " + collider.name);
         switch (collider.name)
         {
             case "DoorOpenCollider":
                 if (!enterAdvCenter)
                 {
+                    Debug.Log("Enter Adv Center");
                     enterAdvCenter = true;
                     StartCoroutine(AdvCenter());
                 }
@@ -93,6 +95,7 @@ public class DubsDialogue : MonoBehaviour
             case "Interactive Section":
                 if (!enterInteracWall)
                 {
+                    Debug.Log("Enter Interactive");
                     enterInteracWall = true;
                     StartCoroutine(InteracWall());
                 }                
@@ -109,35 +112,6 @@ public class DubsDialogue : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider collider)
-    {
-        //switch (collider.name)
-        //{
-        //    case "DoorOpenCollider":
-        //        if (enterAdvCenter)
-        //        {
-        //            enterAdvCenter = false;
-                 
-        //        }
-
-        //        break;
-        //    case "Interactive Section":
-        //        if (enterInteracWall)
-        //        {
-        //            enterInteracWall = false;
-        //        }
-        //        break;
-        //    case "InterviewRoom":
-        //        if (enterInterRoom)
-        //        {
-        //            enterInterRoom = false;
-
-        //        }
-        //        break;
-        //    default:
-        //        break;
-        //}
-    }
     private IEnumerator AdvCenter()
     {
         
@@ -184,8 +158,4 @@ public class DubsDialogue : MonoBehaviour
     {
         StartCoroutine(GameStart());
     }
-
-   
-
-
 }
