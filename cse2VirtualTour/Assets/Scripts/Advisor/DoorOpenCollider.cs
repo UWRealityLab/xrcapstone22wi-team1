@@ -9,6 +9,7 @@ public class DoorOpenCollider : MonoBehaviour
     public GameObject rightDoor;
     public GameObject dialogueHandler;
     public GameObject contentCanvas;
+    public GameObject advisor;
     public bool doorOpened;
     
     // Start is called before the first frame update
@@ -27,9 +28,9 @@ public class DoorOpenCollider : MonoBehaviour
     
     IEnumerator OpenAdvisingDoor()
     {
-        Vector3 move = Vector3.right * 0.1f;
+        Vector3 move = Vector3.right * 0.05f;
         float totalMovement = 2; // distance to open the door
-        float frames = totalMovement / 0.1f;
+        float frames = totalMovement / 0.05f;
         int count = 0;
         for (int i = 0; i < frames; i++)
         {
@@ -46,6 +47,7 @@ public class DoorOpenCollider : MonoBehaviour
     private void ShowAdvisorWelcomeMessage()
     {
         contentCanvas.SetActive(true);
+        advisor.GetComponent<Advisor>().Wave();
         dialogueHandler.GetComponent<AdvisingDialogue>().ShowWelcomeMessage();
     }
 
