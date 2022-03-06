@@ -43,7 +43,7 @@ public class DubsDialogue : MonoBehaviour
 
     private IEnumerator IntroPathMessage()
     {
-        yield return StartCoroutine(PrintMessage(Message.FOLLOW_PATH));
+        yield return StartCoroutine(PrintMessage(Message.GAME_START_TWO));
     }
 
     private IEnumerator IntroAdvCenterMessage()
@@ -62,19 +62,32 @@ public class DubsDialogue : MonoBehaviour
     {
         yield return StartCoroutine(PrintMessage(Message.GAME_START));
     }
+
     public IEnumerator PrintMessage(string message)
     {
-
-        dialogue.text = "";
-        audioSource.Play();
         dubs.GetComponent<DubsNavMesh>().messagePopUp = true;
+        yield return new WaitForSeconds(2);
+        float begin_time = Time.time;
+        dubs.GetComponent<Animator>().SetBool("DisplayingMessage", true);
+
+        dubsDialogueBubble.SetActive(true);
+        audioSource.Play();
+        
+        dialogue.text = "";
         foreach (string str in message.Split(' '))
         {
             dialogue.text += str + " ";
             yield return new WaitForSeconds(speed);
+            
+            if (Time.time - begin_time > 2f)
+            {
+                dubs.GetComponent<Animator>().SetBool("DisplayingMessage", false);
+            }
+            
         }
         yield return new WaitForSeconds(1);
         
+
     }
 
  
@@ -88,6 +101,7 @@ public class DubsDialogue : MonoBehaviour
                 {
                     Debug.Log("Enter Adv Center");
                     enterAdvCenter = true;
+
                     StartCoroutine(AdvCenter());
                 }
 
@@ -115,43 +129,39 @@ public class DubsDialogue : MonoBehaviour
     private IEnumerator AdvCenter()
     {
         
-        dubsDialogueBubble.SetActive(true);
         IntroAdvCenter();
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(11);
         dubsDialogueBubble.SetActive(false);
         dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
        
     }
     private IEnumerator InteracWall()
     {
-        dubsDialogueBubble.SetActive(true);
         IntroInteracWall();
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(14);
         dubsDialogueBubble.SetActive(false);
         dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
        
     }
     private IEnumerator IntervRoom()
     {
-        dubsDialogueBubble.SetActive(true);
         IntroInterviewRoom();
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(12);
         dubsDialogueBubble.SetActive(false);
         dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
        
     }
     private IEnumerator GameStart()
     {
-        dubsDialogueBubble.SetActive(true);
+        
         IntroWelcome();
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(10);
         IntroPath();
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(12);
         dubsDialogueBubble.SetActive(false);
         
         dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
-        dubs.GetComponent<Animator>().SetBool("GameStart", true);
-      
+        dubs.GetComponent<Animator>().SetBool("DisplayingMessage", false);
     }
 
     private void Start()

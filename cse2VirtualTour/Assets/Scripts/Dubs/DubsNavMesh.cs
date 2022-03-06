@@ -65,7 +65,10 @@ public class DubsNavMesh : MonoBehaviour
     {
         Quaternion target = Quaternion.Euler(0, playerTransform.localEulerAngles.y + CameraPositionTransform.localEulerAngles.y + 180, 0);
         if (time < 2.5f) // 2 sec for dubs to turn
+        {
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotationSpeed);
+
+        }
     }
 
    

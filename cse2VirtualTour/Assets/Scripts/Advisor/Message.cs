@@ -39,6 +39,6 @@ public static class Message
     public const string INTERACTIVE_WALL = "Now, on the Interactive Wall, there are four main topics that you may be interested in and you can drag the wall to view more information. Please read through the contents. We will have a quiz for you at the end of the tour.";
     public const string VIRTUAL_ADIVISING_CENTER = "Got questions for Allen School admissions? Welcome to the Advising Center! You can choose your options for freshmen admission or transfer admission.";
     public const string INTERVIEW_ROOM = "You finished the CSE2 Virtual Tour! Let’s have a pop quiz to test your knowledge for the building. If you pass the quiz, you’ll receive a badge to enter undergrad common!";
-    public const string FOLLOW_PATH = "I have a couple tasks for you to complete during this tour. First of all, let’s go to the big Interactive Wall to learn more about the Allen school.";
+    public const string GAME_START_TWO = "I have a couple tasks for you to complete during this tour. First of all, let’s go to the big Interactive Wall to learn more about the Allen school.";
 
 }
