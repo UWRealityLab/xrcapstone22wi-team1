@@ -136,7 +136,7 @@ public class DubsDialogue : MonoBehaviour
     private IEnumerator InteracWall()
     {
         IntroInteracWall();
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(22);
         dubsDialogueBubble.SetActive(false);
         dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
        

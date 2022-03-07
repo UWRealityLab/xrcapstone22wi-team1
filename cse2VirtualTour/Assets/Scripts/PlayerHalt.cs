@@ -32,7 +32,7 @@ public class PlayerHalt : MonoBehaviour
                 if (!enterInteracWall)
                 {
                     enterInteracWall = true;
-                    StartCoroutine(HaltPlayer(20));
+                    StartCoroutine(HaltPlayer(22));
                 }
                 break;
             case "InterviewRoom":
