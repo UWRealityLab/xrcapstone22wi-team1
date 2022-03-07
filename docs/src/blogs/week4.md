@@ -1,4 +1,4 @@
-# Week 4
+# Week 4 (1/31 - 2/6)
 
 ## Summary
 We created more materials and added lighting/shading to make the building model more realistic. We  imported the Dubs model to the scene and created scripts for Dubs to make it follow the user when the user moving around in the building. We also created the UI for the Interactive Wall and added the content that will be displayed on the interface. 

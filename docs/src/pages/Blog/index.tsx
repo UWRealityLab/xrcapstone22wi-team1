@@ -1,7 +1,7 @@
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const WEEK = 7;
+const WEEK = 8;
 
 const Blog = () => {
     const blogs = []
