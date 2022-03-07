@@ -27,6 +27,7 @@ public class BadgePopUp : MonoBehaviour
         alreadyShowDialogue = false;
         TaskCompleteCanvas.SetActive(false);
         OKButton.SetActive(false);
+        HuskyCard.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,6 +54,7 @@ public class BadgePopUp : MonoBehaviour
         TaskCompleteCanvas.SetActive(true);
         StartCoroutine(ShowDialogue());
         alreadyShowDialogue = true;
+        HuskyCard.SetActive(true);
     }
 
     IEnumerator ShowDialogue()
