@@ -1,4 +1,4 @@
-# Week 2
+# Week 2 (1/17 - 1/23)
 
 ## Project Summary 
 

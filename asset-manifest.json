@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css",
-    "main.js": "/xrcapstone22wi-team1/static/js/main.6a4e273d.js",
+    "main.js": "/xrcapstone22wi-team1/static/js/main.0dcc168b.js",
     "static/media/banner.jpeg": "/xrcapstone22wi-team1/static/media/banner.2e0f242842736f41bb2d.jpeg",
-    "static/media/week2.md": "/xrcapstone22wi-team1/static/media/week2.7912f50b149764d240a7.md",
-    "static/media/week7.md": "/xrcapstone22wi-team1/static/media/week7.3618fc791e2bfee89c48.md",
-    "static/media/week4.md": "/xrcapstone22wi-team1/static/media/week4.e999bc7974b42e1318d4.md",
-    "static/media/week6.md": "/xrcapstone22wi-team1/static/media/week6.52e6bf29ea91aff7be0b.md",
-    "static/media/week3.md": "/xrcapstone22wi-team1/static/media/week3.e10e6491347fb0713adf.md",
+    "static/media/week2.md": "/xrcapstone22wi-team1/static/media/week2.298873aeec3222fdef12.md",
+    "static/media/week8.md": "/xrcapstone22wi-team1/static/media/week8.31dd89038f6acdd303db.md",
+    "static/media/week7.md": "/xrcapstone22wi-team1/static/media/week7.84052880d40bd21165db.md",
+    "static/media/week4.md": "/xrcapstone22wi-team1/static/media/week4.4b64c5cf3939219875e8.md",
+    "static/media/week6.md": "/xrcapstone22wi-team1/static/media/week6.ff0ebdb03be0dd76597a.md",
+    "static/media/week3.md": "/xrcapstone22wi-team1/static/media/week3.e25e041399757c1164b9.md",
     "index.html": "/xrcapstone22wi-team1/index.html",
-    "static/media/week1.md": "/xrcapstone22wi-team1/static/media/week1.a7432ea45324b097cb6f.md",
-    "static/media/week5.md": "/xrcapstone22wi-team1/static/media/week5.7158f04268aa790d9993.md",
+    "static/media/week1.md": "/xrcapstone22wi-team1/static/media/week1.036f29700750e16dfb0e.md",
+    "static/media/week5.md": "/xrcapstone22wi-team1/static/media/week5.a53dc9a9e631b0e169eb.md",
     "main.a1fe03a4.css.map": "/xrcapstone22wi-team1/static/css/main.a1fe03a4.css.map",
-    "main.6a4e273d.js.map": "/xrcapstone22wi-team1/static/js/main.6a4e273d.js.map"
+    "main.0dcc168b.js.map": "/xrcapstone22wi-team1/static/js/main.0dcc168b.js.map"
   },
   "entrypoints": [
     "static/css/main.a1fe03a4.css",
-    "static/js/main.6a4e273d.js"
+    "static/js/main.0dcc168b.js"
   ]
 }

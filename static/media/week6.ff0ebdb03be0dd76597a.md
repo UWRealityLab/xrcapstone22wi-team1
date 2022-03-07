@@ -1,4 +1,4 @@
-# Week 6
+# Week 6 (2/14 - 2/20)
 
 ## New Features
 - Added light baking to scene so when users using our application, they will not have lagging issues.

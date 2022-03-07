@@ -1,4 +1,4 @@
-# Week 7
+# Week 7 (2/21 - 2/27)
 
 ## New Features
 - Added the advising center and the UI for admission FAQ.
