@@ -68,7 +68,7 @@ public class Advisor : MonoBehaviour
         rotating[upperLeftArm] = upperArmAngle;
         rotating[lowerLeftArm] = lowerArmAngle;
         rotating[spine1] = spineAngle;
-        Debug.Log(upperArmAngle);
+        //Debug.Log(upperArmAngle);
         StartCoroutine(Rotate(rotating, 5));
         
         int frame = 30;
@@ -95,9 +95,9 @@ public class Advisor : MonoBehaviour
             Transform current = queue.Dequeue();
             if (current.position != originalPositions[current])
             {
-                Debug.Log(current.name + " different position");
-                Debug.Log(current.position);
-                Debug.Log(originalPositions[current]);
+                //    Debug.Log(current.name + " different position");
+                //    Debug.Log(current.position);
+                //    Debug.Log(originalPositions[current]);
                 differecePosition[current] = originalPositions[current];
             }
 
@@ -118,17 +118,17 @@ public class Advisor : MonoBehaviour
         // check if need to reset whole object
         if (transform.position != originalPositions[transform])
         {
-            Debug.Log(transform.name + " different position");
-            Debug.Log(transform.position);
-            Debug.Log(originalPositions[transform]);
+            //Debug.Log(transform.name + " different position");
+            //Debug.Log(transform.position);
+            //Debug.Log(originalPositions[transform]);
             differecePosition[transform] = originalPositions[transform];
         }
 
         if (transform.localEulerAngles != originalRotations[transform])
         {
-            Debug.Log(transform.name + " different rotation");
-            Debug.Log(transform.localEulerAngles);
-            Debug.Log(originalRotations[transform]);
+            //Debug.Log(transform.name + " different rotation");
+            //Debug.Log(transform.localEulerAngles);
+            //Debug.Log(originalRotations[transform]);
             differeceRotation[transform] = originalRotations[transform];
         }
         //StartCoroutine(Move(differecePosition, 5));
