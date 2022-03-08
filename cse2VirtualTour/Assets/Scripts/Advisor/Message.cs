@@ -42,6 +42,7 @@ public static class Message
     public const string VIRTUAL_ADIVISING_CENTER = "Got questions for Allen School admissions? Welcome to the Advising Center! You can choose your options for freshmen admission or transfer admission.";
     public const string VIRTUAL_ADIVISING_CENTER_TWO = "Once finished, please go to the interview room for your next stop.";
     public const string INTERVIEW_ROOM = "You finished the CSE2 Virtual Tour! Let’s have a pop quiz to test your knowledge for the building. If you pass the quiz, you’ll receive a badge to enter undergrad common!";
-    
+    public const string TASK_COMPLETE_DIALOGUE = "Congratulations! You've completed all the tasks for this virtual tour! Now you are given a Husky card as a badge to unlock the entry to the undergrad commons to explore more!";
+
 
 }
