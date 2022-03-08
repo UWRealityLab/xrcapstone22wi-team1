@@ -14,12 +14,14 @@ public class QuizManager : MonoBehaviour
     public GameObject StartPanel;
 
     public TMP_Text QuestionText;
+    public bool QuizCompleted = false;
 
     int currentQuestionIndex = 0;
 
     private void Start()
     {
         currentQuestionIndex = 0;
+        QuizCompleted = false;
         CompletedPanel.SetActive(false);
         generateQuestion();
     }
@@ -28,12 +30,14 @@ public class QuizManager : MonoBehaviour
     {
         currentQuestionIndex = 0;
         CompletedPanel.SetActive(false);
+        QuizCompleted = false;
         QuizPanel.SetActive(true);
         generateQuestion();
     }
 
     void completed()
     {
+        QuizCompleted = true;
         QuizPanel.SetActive(false);
         CompletedPanel.SetActive(true);
     }

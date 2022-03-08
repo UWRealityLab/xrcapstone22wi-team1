@@ -12,11 +12,14 @@ public class DubsDialogue : MonoBehaviour
     public TextMeshProUGUI dialogue;
     public GameObject dubsDialogueBubble;
     public GameObject dubs;
+    public QuizManager QuizManager;
 
     public AudioSource audioSource;
     private bool enterAdvCenter;
     private bool enterInteracWall;
     private bool enterInterRoom;
+    private bool quizTaskCompleted;
+    
     public void IntroAdvCenter()
     {
         StartCoroutine(IntroAdvCenterMessage());
@@ -34,6 +37,11 @@ public class DubsDialogue : MonoBehaviour
     public void IntroWelcome()
     {
         StartCoroutine(IntroWelcomeMessage());
+    }
+
+    public void IntroFinished()
+    {
+        StartCoroutine(IntroFinishedMessage());
     }
 
     private IEnumerator IntroAdvCenterMessage()
@@ -57,7 +65,10 @@ public class DubsDialogue : MonoBehaviour
         yield return StartCoroutine(PrintMessage(Message.GAME_START, false));
         yield return StartCoroutine(PrintMessage(Message.GAME_START_TWO, true));
     }
-
+    private IEnumerator IntroFinishedMessage()
+    {
+        yield return StartCoroutine(PrintMessage(Message.TASK_COMPLETE_DIALOGUE, false));
+    }
     public IEnumerator PrintMessage(string message, bool part2)
     {
         dubs.GetComponent<DubsNavMesh>().messagePopUp = true;
@@ -160,8 +171,32 @@ public class DubsDialogue : MonoBehaviour
         dubs.GetComponent<Animator>().SetBool("DisplayingMessage", false);
     }
 
+    private IEnumerator TourFinished()
+    {
+
+        IntroFinished();
+        quizTaskCompleted = true;
+        yield return new WaitForSeconds(12);
+        dubsDialogueBubble.SetActive(false);
+        dubs.GetComponent<DubsNavMesh>().messagePopUp = false;
+        dubs.GetComponent<Animator>().SetBool("DisplayingMessage", false);
+    }
+
+    public bool getQuizTaskComplete()
+    {
+        return quizTaskCompleted;
+    }
+
     private void Start()
     {
         StartCoroutine(GameStart());
+    }
+
+    private void Update()
+    {
+        if (QuizManager.QuizCompleted && !quizTaskCompleted && enterAdvCenter && enterInteracWall && enterInterRoom)
+        {
+            StartCoroutine(TourFinished());
+        }
     }
 }
