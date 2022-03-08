@@ -8,6 +8,7 @@ public class PlayerHalt : MonoBehaviour
     private bool enterAdvCenter;
     private bool enterInteracWall;
     private bool enterInterRoom;
+    private bool quizTaskCompleted;
     public GameObject locomotion;
 
     public Transform advCenter;
@@ -59,6 +60,11 @@ public class PlayerHalt : MonoBehaviour
 
     private void Update()
     {
+        if (!quizTaskCompleted && GetComponent<DubsDialogue>().getQuizTaskComplete())
+        {
+            quizTaskCompleted = true;
+            StartCoroutine(HaltPlayer(12));
+        }
         if (!enterInteracWall)
         {
             //Debug.Log("Draw path to interactive wall");
