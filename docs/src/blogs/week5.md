@@ -1,4 +1,4 @@
-# Week 5
+# Week 5 (2/7 - 2/13)
 
 ## Summary
 We added more contents on the Interactive wall. To deal with the laggy rendering issue, we baked the light for the entire scene. During the midterm presentation, we got a feedback about using the path finder for Dubs to navigate in the building. We adopted this feedback and used path finder for Dubs. Now Dubs is able to going up and down stairs.

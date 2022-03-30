@@ -1,4 +1,4 @@
-# Week 3
+# Week 3 (1/24 - 1/30)
 
 ## Summary
 

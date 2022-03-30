@@ -1,4 +1,4 @@
-# Week 1
+# Week 1 (1/10 - 1/16)
 
 ## Weekly updates
 - Jolin
